@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { ArrowRight, BadgeCheck, GraduationCap, Heart, MapPin, Search, ShieldCheck, Wallet, Users, BedDouble, CalendarDays, Star } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const homes = [
   { name: 'The Student House', place: 'Delft · near TU Delft', price: 425, rating: '4.8', type: 'Private room', tag: 'Budget friendly', duration: 'Academic year', image: 'photo-1522708323590-d24dbb6b0267', premium: false, details: 'Furnished · Shared kitchen · Utilities included' },
@@ -71,7 +71,7 @@ export function HomePage() {
         <p>Find a room near your university, meet your new housemates and settle in — with options that respect your student budget.</p>
         <a className='hero-link' href='#student-homes'>Explore student homes <ArrowRight size={17} /></a>
       </div>
-      <div className='container hero-search'><SearchPanel onSearch={setFilters} /></div>
+      <div className='container hero-search'><SearchPanel onSearch={value => { setFilters(value); navigate('/search?' + new URLSearchParams(value).toString()) }} /></div>
       <div className='hero-caption'>More than a room. A place to belong.</div>
     </section>
 
