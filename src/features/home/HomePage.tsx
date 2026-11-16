@@ -49,7 +49,7 @@ function SearchPanel({ onSearch }: { onSearch: (filters: { place: string; budget
   </form>
 }
 
-export function HomePage() {
+export function HomePage() {\n  const navigate = useNavigate()
   const [filters, setFilters] = useState({ place: '', budget: 'Any budget', duration: 'Any duration', type: 'All accommodation' })
   const [premiumVisible, setPremiumVisible] = useState(true)
   const filteredHomes = useMemo(() => homes.filter(home => {
