@@ -3,7 +3,7 @@ import { ArrowRight, BadgeCheck, GraduationCap, Heart, MapPin, Search, ShieldChe
 import { Link, useNavigate } from 'react-router-dom'
 
 const homes = [
-  { name: 'Legon Student House', place: 'Accra (Legon) · near TU Accra (Legon)', price: 1800, rating: 'Sample', type: 'Private room', tag: 'Budget friendly', duration: 'Academic year', image: 'photo-1522708323590-d24dbb6b0267', premium: false, details: 'Furnished · Shared kitchen · Utilities included' },
+  { name: 'Legon Student House', place: 'Accra (Legon) · near the University of Ghana', price: 1800, rating: 'Sample', type: 'Private room', tag: 'Budget friendly', duration: 'Academic year', image: 'photo-1522708323590-d24dbb6b0267', premium: false, details: 'Furnished · Shared kitchen · Utilities included' },
   { name: 'Kumasi Campus Shared Apartment', place: 'Kumasi · 12 min to campus', price: 2200, rating: 'Sample', type: 'Shared apartment', tag: 'Great value', duration: 'Calendar year', image: 'photo-1600607687939-ce8a6c25118c', premium: false, details: 'Furnished · 3 housemates · Bike storage' },
   { name: 'Cape Coast Study Residence', place: 'Cape Coast · near University of Cape Coast', price: 3200, rating: 'Sample', type: 'Private room', tag: 'Premium pick', duration: 'Flexible', image: 'photo-1600210492486-724fe5c67fb0', premium: true, details: 'Private bathroom · Study area · Bills included' },
   { name: 'Accra Student Hostel', place: 'Accra (Madina) · campus area', price: 950, rating: 'Sample', type: 'Hostel', tag: 'Lowest monthly price', duration: 'Short stay', image: 'photo-1555854877-bab0e564b8d5', premium: false, details: 'Shared facilities · Furnished · Flexible check-in' },
@@ -55,7 +55,7 @@ export function HomePage() {\n  const navigate = useNavigate()
   const filteredHomes = useMemo(() => homes.filter(home => {
     const term = filters.place.trim().toLowerCase()
     const matchesPlace = !term || `${home.name} ${home.place} ${home.type}`.toLowerCase().includes(term)
-    const [min, max] = filters.budget === 'Up to GH₵1,000' ? [0, 350] : filters.budget === 'GH₵1,000–GH₵2,000' ? [350, 500] : filters.budget === 'GH₵2,000–GH₵3,000' ? [500, 700] : filters.budget === 'GH₵3,000+' ? [700, Infinity] : [0, Infinity]
+    const [min, max] = filters.budget === 'Up to GH₵1,000' ? [0, 1000] : filters.budget === 'GH₵1,000–GH₵2,000' ? [1000, 2000] : filters.budget === 'GH₵2,000–GH₵3,000' ? [2000, 3000] : filters.budget === 'GH₵3,000+' ? [3000, Infinity] : [0, Infinity]
     const matchesBudget = home.price >= min && home.price <= max
     const matchesDuration = filters.duration === 'Any duration' || home.duration === filters.duration || home.duration === 'Flexible' && filters.duration !== 'Short stay'
     const matchesType = filters.type === 'All accommodation' || home.type === filters.type
