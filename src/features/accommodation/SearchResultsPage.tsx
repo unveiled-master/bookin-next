@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, BedDouble, CalendarDays, MapPin, Search, SlidersHorizontal, Star, Wallet } from 'lucide-react'
+import { ArrowLeft, ArrowRight, BedDouble, CalendarDays, MapPin, Search, SlidersHorizontal, Wallet } from 'lucide-react'
 import { accommodations } from './accommodations'
 
 export function SearchResultsPage() {
@@ -41,7 +41,7 @@ export function SearchResultsPage() {
         <div className='results-list'>
           {results.length ? results.map(home=><article className='result-card' key={home.id}>
             <Link to={`/accommodation/${home.id}`} className='result-card__photo'><img src={`https://images.unsplash.com/${home.image}?auto=format&fit=crop&w=850&q=85`} alt={home.name}/><span>{home.tag}</span></Link>
-            <div className='result-card__body'><div className='result-card__meta'><span>{home.type}</span><span><Star size={13} fill='currentColor'/> Sample</span></div><Link to={`/accommodation/${home.id}`}><h2>{home.name}</h2></Link><p className='result-card__location'><MapPin size={14}/>{home.city} · {home.university}</p><p className='result-card__distance'>{home.distance}</p><div className='result-card__facts'><span>{home.duration.slice(0,2).join(' · ')}</span><span>{home.bills}</span></div><div className='result-card__bottom'><p><strong>GH₵{home.price.toLocaleString('en-GH')}</strong> / month*</p><Link to={`/accommodation/${home.id}`}>View details <ArrowRight size={15}/></Link></div></div>
+            <div className='result-card__body'><div className='result-card__meta'><span>{home.type}</span><span>Illustrative example</span></div><Link to={`/accommodation/${home.id}`}><h2>{home.name}</h2></Link><p className='result-card__location'><MapPin size={14}/>{home.city} · {home.university}</p><p className='result-card__distance'>{home.distance}</p><div className='result-card__facts'><span>{home.duration.slice(0,2).join(' · ')}</span><span>{home.bills}</span></div><div className='result-card__bottom'><p><strong>GH₵{home.price.toLocaleString('en-GH')}</strong> / month*</p><Link to={`/accommodation/${home.id}`}>View details <ArrowRight size={15}/></Link></div></div>
           </article>) : <div className='empty-search'><strong>No demo homes match those filters.</strong><p>Try another Ghanaian university town, a wider budget or a different rental period.</p><button className='button' onClick={reset}>Clear filters</button></div>}
         </div>
       </div>
