@@ -27,3 +27,24 @@ h1,h2,h3,.hero h1,.section-heading h2,.stay-card h3,.destination-card__copy stro
 .button,.search-submit{border-radius:9px;background:var(--espresso);font-weight:800}.button:hover,.search-submit:hover{background:#654936}.search-panel{border-radius:15px;padding:13px;box-shadow:0 18px 48px rgba(43,30,21,.18)}.search-field{padding:10px 15px}.search-field input,.search-field select{font-family:inherit}.search-submit{padding:16px 20px;background:var(--accent);color:#2f2119}.search-submit:hover{background:#e5a16c}
 .hero__overlay{background:linear-gradient(90deg,rgba(31,23,18,.78),rgba(38,28,21,.48) 48%,rgba(35,27,21,.12)),linear-gradient(0deg,rgba(31,23,18,.27),transparent 45%)}.hero-kicker,.eyebrow{letter-spacing:1.7px}.hero h1{font-weight:900;letter-spacing:-.055em}.hero h1 em,.editorial-cta h2 em,.auth-visual h2 em{color:#efbd8f;font-style:normal}.hero-link,.cta-link{border-bottom-width:2px}.trust-strip{background:#f3eee7}.trust-strip__inner svg{color:var(--accent)}.stay-card__image-wrap{border-radius:13px}.stay-card__tag{border-radius:7px;font-size:10px;padding:7px 10px}.favourite-button{border-radius:11px}.stay-card h3{font-size:20px}.destination-card{border-radius:13px}.destination-card__copy strong{font-weight:800}.auth-field input,.google-button{border-radius:9px}.demo-hint{border-radius:9px;background:var(--accent-soft);border-color:#ecd0b8}
 @media(max-width:700px){.brand__mark{width:35px;height:35px}.brand__name{font-size:23px}.search-panel{border-radius:13px}.stay-card__image-wrap{border-radius:11px}}
+
+
+/* Student accommodation homepage refresh */
+.student-hero .hero__image{background-image:url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=2200&q=90');background-position:center 52%}
+.student-hero .hero__content{padding-top:100px}
+.student-hero .hero-kicker{display:inline-flex;align-items:center;gap:8px}
+.student-hero .hero h1 em{font-style:normal}
+.student-search{grid-template-columns:1.35fr 1fr 1fr 1fr auto}
+.student-search .search-field{gap:9px}
+.student-search .search-field>svg{width:17px}
+.home-card__details{font-size:10px;line-height:1.55;color:var(--muted);margin:0 0 10px;min-height:31px}
+.home-card__duration{display:inline-block;margin-top:10px;padding:5px 9px;border-radius:6px;background:#f1e9df;color:var(--brown);font-size:9px;font-weight:800}
+.home-card__duration.is-premium{background:#f6e6d7;color:#925c32}
+.home-listing-toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:-12px 0 23px;color:var(--muted);font-size:11px}
+.home-listing-toolbar label{display:flex;align-items:center;gap:8px;cursor:pointer;color:var(--brown);font-weight:700}
+.home-listing-toolbar input{accent-color:var(--accent);width:15px;height:15px}
+.campus-section .section-heading{margin-bottom:30px}
+.campus-section .destination-card__copy small{max-width:220px;line-height:1.5}
+.student-cta .editorial-cta__image{background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85')}
+@media(max-width:1000px){.student-search{grid-template-columns:1.2fr 1fr 1fr}.student-search .search-field:nth-child(3){border-right:0}.student-search .search-submit{grid-column:1/-1}}
+@media(max-width:700px){.student-hero{height:700px;min-height:700px}.student-hero .hero__content{padding-top:68px}.student-search{grid-template-columns:1fr 1fr}.student-search .search-field:nth-child(2){border-right:0}.student-search .search-field:nth-child(3){border-right:1px solid var(--line)}.student-search .search-field:nth-child(4){border-right:0}.home-listing-toolbar{align-items:flex-start;flex-direction:column;margin:-4px 0 20px}.campus-section .destination-card{height:220px}}
