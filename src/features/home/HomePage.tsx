@@ -1,19 +1,19 @@
 import { useMemo, useState } from 'react'
-import { ArrowRight, BadgeCheck, GraduationCap, Heart, MapPin, Search, ShieldCheck, Wallet, Users, BedDouble, CalendarDays, Star } from 'lucide-react'
+import { ArrowRight, BadgeCheck, GraduationCap, Heart, MapPin, Search, ShieldCheck, Wallet, Users, BedDouble, CalendarDays } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const homes = [
-  { name: 'Legon Student House', place: 'Accra (Legon) · near the University of Ghana', price: 1800, rating: 'Sample', type: 'Private room', tag: 'Budget friendly', duration: 'Academic year', image: 'photo-1522708323590-d24dbb6b0267', premium: false, details: 'Furnished · Shared kitchen · Utilities included' },
-  { name: 'Kumasi Campus Shared Apartment', place: 'Kumasi · 12 min to campus', price: 2200, rating: 'Sample', type: 'Shared apartment', tag: 'Great value', duration: 'Calendar year', image: 'photo-1600607687939-ce8a6c25118c', premium: false, details: 'Furnished · 3 housemates · Bike storage' },
-  { name: 'Cape Coast Study Residence', place: 'Cape Coast · near University of Cape Coast', price: 3200, rating: 'Sample', type: 'Private room', tag: 'Premium pick', duration: 'Flexible', image: 'photo-1600210492486-724fe5c67fb0', premium: true, details: 'Private bathroom · Study area · Bills included' },
-  { name: 'Accra Student Hostel', place: 'Accra (Madina) · campus area', price: 950, rating: 'Sample', type: 'Hostel', tag: 'Lowest monthly price', duration: 'Short stay', image: 'photo-1555854877-bab0e564b8d5', premium: false, details: 'Shared facilities · Furnished · Flexible check-in' },
+  { name: 'Legon Student House', place: 'Accra (Legon) · near the University of Ghana', price: 1800, rating: 'Sample', type: 'Private room', tag: 'Budget friendly', duration: 'Academic year', image: 'photo-1522708323590-d24dbb6b0267', premium: false, details: 'Furnished · Shared kitchen · Utility details to confirm' },
+  { name: 'Kumasi Campus Shared Apartment', place: 'Kumasi · 12 min to campus', price: 2200, rating: 'Sample', type: 'Shared apartment', tag: 'Great value', duration: 'Calendar year', image: 'photo-1600607687939-ce8a6c25118c', premium: false, details: 'Furnished · Shared living areas · Utility details to confirm' },
+  { name: 'Cape Coast Study Residence', place: 'Cape Coast · near University of Cape Coast', price: 3200, rating: 'Sample', type: 'Private room', tag: 'Premium pick', duration: 'Flexible', image: 'photo-1600210492486-724fe5c67fb0', premium: true, details: 'Private washroom · Study area · Utility details to confirm' },
+  { name: 'Accra Student Hostel', place: 'Accra (Madina) · campus area', price: 950, rating: 'Sample', type: 'Hostel', tag: 'Lowest monthly price', duration: 'Short stay', image: 'photo-1555854877-bab0e564b8d5', premium: false, details: 'Shared facilities · Furnished · Availability to confirm' },
 ]
 
 const campuses = [
-  { name: 'Accra (Legon)', school: 'TU Accra (Legon) and nearby colleges', image: 'photo-1518005020951-eccb494ad742' },
+  { name: 'Accra (Legon)', school: 'University of Ghana and nearby colleges', image: 'photo-1518005020951-eccb494ad742' },
   { name: 'Cape Coast', school: 'University of Cape Coast and more', image: 'photo-1511818966892-d7d671e672a2' },
-  { name: 'Kumasi', school: 'Kumasi University and HU', image: 'photo-1519608487953-e999c86e7455' },
-  { name: 'Accra (Madina)', school: 'Accra (Madina) University', image: 'photo-1516979187457-637546e3f8f2' },
+  { name: 'Kumasi', school: 'KNUST and nearby colleges', image: 'photo-1519608487953-e999c86e7455' },
+  { name: 'Accra (Madina)', school: 'UPSA and nearby colleges', image: 'photo-1516979187457-637546e3f8f2' },
 ]
 
 const photo = (id: string, w = 900) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`
@@ -26,7 +26,7 @@ function HomeCard({ home }: { home: typeof homes[number] }) {
       <span className='stay-card__tag'>{home.tag}</span>
       <button className={`favourite-button ${saved ? 'is-saved' : ''}`} aria-label={saved ? `Remove ${home.name} from saved homes` : `Save ${home.name}`} aria-pressed={saved} onClick={() => setSaved(v => !v)}><Heart size={18} fill={saved ? 'currentColor' : 'none'} /></button>
     </div>
-    <div className='stay-card__meta'><span>{home.type}</span><span className='rating'><Star size={14} fill='currentColor' /> {home.rating}</span></div>
+    <div className='stay-card__meta'><span>{home.type}</span><span className='rating'>Illustrative example</span></div>
     <h3>{home.name}</h3>
     <p className='stay-card__location'><MapPin size={14} /> {home.place}</p>
     <p className='home-card__details'>{home.details}</p>
