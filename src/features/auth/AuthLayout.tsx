@@ -1,0 +1,7 @@
+import type { ReactNode, InputHTMLAttributes } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowLeft } from 'lucide-react'
+import { Brand } from '../../components/ui/Brand'
+export function AuthLayout({children,title,subtitle}:{children:ReactNode;title:string;subtitle:string}) { return <main className='auth-page'><section className='auth-visual'><div className='auth-visual__photo'/><div className='auth-visual__veil'/><div className='auth-visual__top'><Brand light/><Link to='/' className='back-home'><ArrowLeft size={15}/> Back to Bookinn</Link></div><div className='auth-visual__quote'><span className='eyebrow'>A BETTER WAY TO GET AWAY</span><h2>Find a place<br/>that feels like <em>yours.</em></h2><p>Beautiful stays, thoughtful details, and room in the budget for more memories.</p></div><span className='auth-visual__foot'>The world is full of wonderful places.</span></section><section className='auth-content'><div className='auth-content__inner'><div className='auth-mobile-brand'><Brand/></div><span className='eyebrow'>WELCOME TO BOOKINN</span><h1>{title}</h1><p className='auth-subtitle'>{subtitle}</p>{children}</div></section></main> }
+type FieldProps = InputHTMLAttributes<HTMLInputElement> & {label:string}
+export function AuthField({label,id,...props}:FieldProps) { return <label className='auth-field' htmlFor={id}><span>{label}</span><input id={id} {...props}/></label> }
