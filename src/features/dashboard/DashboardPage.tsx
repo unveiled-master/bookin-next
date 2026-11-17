@@ -69,8 +69,7 @@ function ParentDashboard({ name, email }: { name: string; email: string }) {
 }
 type OwnerListing = { id: number; name: string; location: string; university: string; price: number; category: string; status: 'Active'|'Paused'|'Draft' }
 type OwnerInquiry = { id: number; student: string; email: string; listing: string; message: string; date: string; confirmed: boolean }
-function OwnerDashboard({ name }: { name: string }) {
- const [tab,setTab]=useState<'overview'|'listings'|'inquiries'|'students'|'analytics'>('overview')
+function OwnerDashboard({ name, tab, setTab }: { name: string; tab: 'overview'|'listings'|'inquiries'|'students'|'analytics'; setTab: (tab: 'overview'|'listings'|'inquiries'|'students'|'analytics') => void }) {
  const [listings,setListings]=useState<OwnerListing[]>([
   {id:1,name:'Legon Student House',location:'Accra · Legon',university:'University of Ghana',price:1800,category:'Private room',status:'Active'},
   {id:2,name:'Madina Student Hostel',location:'Accra · Madina',university:'University of Professional Studies, Accra',price:950,category:'Hostel bedspace',status:'Draft'},
@@ -123,7 +122,31 @@ export function DashboardPage() {
  const { user, signOut } = useAuth()
  const navigate = useNavigate()
  if (!user) return <Navigate to='/login' replace/>
+ const [mobileAsideOpen,setMobileAsideOpen]=useState(false)
+ const [ownerTab,setOwnerTab]=useState<'overview'|'listings'|'inquiries'|'students'|'analytics'>('overview')
  const roleLabel = user.role === 'owner' ? 'Property owner' : 'Parent / guardian'
  if (user.role === 'student') return <main className='dashboard-page'><StudentDashboard name={user.name} email={user.email} onSignOut={() => { signOut(); navigate('/') }}/></main>
- return <main className='dashboard-page'><div className='dashboard-container'><header className='dashboard-topbar'><Link to='/' className='dashboard-brand'>bookinn<span>.</span></Link><div className='dashboard-user'><div><strong>{user.name}</strong><small>{roleLabel} · Demo account</small></div><button type='button' onClick={() => { signOut(); navigate('/') }}>Sign out</button></div></header><div className='dashboard-demo-banner'><BadgeCheck size={16}/> DEMO WORKSPACE <span>All names, activity, properties and figures on this page are fictional sample data.</span></div>{user.role === 'parent' && <ParentDashboard name={user.name} email={user.email}/ >}{user.role === 'owner' && <OwnerDashboard name={user.name}/ >}<footer className='dashboard-footer'>Bookinn Ghana · Frontend demo · No real bookings, payments or messages are processed.</footer></div></main>
+ const ownerItems=[{id:'overview' as const,label:'Dashboard',icon:Home},{id:'listings' as const,label:'My listings',icon:Building2},{id:'inquiries' as const,label:'Inquiries',icon:MessageCircle},{id:'students' as const,label:'Students',icon:Users},{id:'analytics' as const,label:'Performance',icon:TrendingUp}]
+ const signOutNow=()=>{signOut();navigate('/')}
+ return <main className='dashboard-page'><div className='student-shell account-shell'>
+  <aside className={`student-sidebar ${mobileAsideOpen?'is-open':''}`}>
+   <div className='student-sidebar-head'><Link to='/' className='student-sidebar-brand' onClick={()=>setMobileAsideOpen(false)}>bookinn<span>.</span></Link><button type='button' className='student-sidebar-close' aria-label='Close dashboard menu' onClick={()=>setMobileAsideOpen(false)}><X size={22}/></button></div>
+   <div className='student-sidebar-user'><span>{user.name.charAt(0).toUpperCase()}</span><div><strong>{user.name}</strong><small>{roleLabel}</small></div></div>
+   <div className='student-sidebar-label'>{user.role==='owner'?'PROPERTY MANAGEMENT':'PARENT MENU'}</div>
+   <nav aria-label={`${roleLabel} navigation`}>
+    {user.role==='owner'?ownerItems.map(item=><button key={item.id} type='button' className={ownerTab===item.id?'is-active':''} onClick={()=>{setOwnerTab(item.id);setMobileAsideOpen(false)}}><item.icon size={17}/>{item.label}{item.id==='inquiries'&&<span>2</span>}</button>):<><button type='button' className='is-active' onClick={()=>setMobileAsideOpen(false)}><Home size={17}/> My account</button><Link to='/search' onClick={()=>setMobileAsideOpen(false)}><Search size={17}/> Explore stays <ArrowRight size={13}/></Link></>}
+   </nav>
+   <div className='student-sidebar-help'><strong>Need help?</strong><p>{user.role==='owner'?'Manage your student accommodation on Bookinn Ghana.':'Find the right student accommodation in Ghana.'}</p><Link to='/' onClick={()=>setMobileAsideOpen(false)}>Visit Bookinn <ArrowRight size={13}/></Link></div>
+   <button type='button' className='student-sidebar-signout' onClick={signOutNow}>Sign out</button><div className='student-sidebar-foot'>BOOKINN GHANA · DEMO</div>
+  </aside>
+  <section className='student-workspace'>
+   <header className='student-workspace-top'><button type='button' className='student-mobile-menu' aria-label='Toggle dashboard menu' aria-expanded={mobileAsideOpen} onClick={()=>setMobileAsideOpen(open=>!open)}><Menu size={20}/></button><div><small>{user.role==='owner'?'PROPERTY OWNER SPACE':'PARENT SPACE'}</small><strong>{user.role==='owner'?ownerItems.find(x=>x.id===ownerTab)?.label:'My account'}</strong></div><span className='student-demo-tag'>DEMO ACCOUNT</span></header>
+   <div className='account-workspace-content'>
+    <div className='dashboard-demo-banner'><BadgeCheck size={16}/> DEMO WORKSPACE <span>All names, activity, properties and figures on this page are fictional sample data.</span></div>
+    {user.role==='parent'&&<ParentDashboard name={user.name} email={user.email}/>}
+    {user.role==='owner'&&<OwnerDashboard name={user.name} tab={ownerTab} setTab={setOwnerTab}/>}
+    <footer className='dashboard-footer'>Bookinn Ghana · Frontend demo · No real bookings, payments or messages are processed.</footer>
+   </div>
+  </section>
+ </div></main>
 }
