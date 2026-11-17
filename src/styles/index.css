@@ -283,3 +283,28 @@ h1,h2,h3,.hero h1,.section-heading h2,.stay-card h3,.destination-card__copy stro
 .owner-modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
 @media(max-width:800px){.owner-overview-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.owner-tabs{margin-right:-2px}.owner-tabs button{padding:10px;font-size:10px}.owner-listing-row{align-items:flex-start;flex-wrap:wrap}.owner-listing-row .owner-state{margin-left:51px}.owner-manage-row{align-items:flex-start}.owner-row-actions{width:100%;justify-content:flex-end;padding-top:8px;border-top:1px solid #f0ebe5}.owner-table-panel .dashboard-panel__heading{align-items:flex-start;flex-direction:column}.owner-form-pair{grid-template-columns:1fr}.owner-modal{padding:17px}}
+
+
+/* Shared dashboard shell for parent and property-owner workspaces */
+.account-shell{width:min(1440px,100%);margin:0 auto;min-height:calc(100vh - 52px)}
+.account-shell .student-workspace{min-width:0;background:#faf8f5}
+.account-shell .student-workspace-top{position:sticky;top:0;z-index:5}
+.account-workspace-content{width:min(1160px,100%);margin:0 auto;padding:20px clamp(22px,4vw,55px) 45px}
+.account-workspace-content>.dashboard-demo-banner{margin:0 0 28px}
+.account-workspace-content>.dashboard-footer{margin-top:28px}
+.account-shell .parent-account-page{min-height:55vh}
+@media(max-width:700px){
+ .account-shell{grid-template-columns:1fr;min-height:calc(100vh - 26px)}
+ .account-workspace-content{padding:16px 16px 35px}
+ .account-shell .student-workspace-top{height:60px;padding:0 18px;justify-content:flex-start;gap:13px}
+ .account-shell .student-mobile-menu{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #e9e1d8;border-radius:8px;background:#fffdfa;color:#493326;cursor:pointer;flex:none}
+ .account-shell .student-sidebar{position:fixed;inset:0;width:100%;height:100%;min-height:100%;padding:27px 18px 18px;border-radius:0;z-index:50;transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto}
+ .account-shell .student-sidebar.is-open{transform:translateX(0)}
+ .account-shell .student-sidebar-head{width:100%;margin-bottom:18px}
+ .account-shell .student-sidebar-head .student-sidebar-brand{padding:0 12px}
+ .account-shell .student-sidebar-close{display:inline-flex}
+ .account-shell .student-sidebar-user,.account-shell .student-sidebar-label,.account-shell .student-sidebar-help,.account-shell .student-sidebar-foot{display:block}
+ .account-shell .student-sidebar nav{display:grid;gap:5px;overflow:visible;padding:0}
+ .account-shell .student-sidebar nav button,.account-shell .student-sidebar nav a{width:100%;padding:12px;border:0;font-size:12px;white-space:normal}
+ .account-shell .student-sidebar-signout{position:static;margin-top:17px;padding:11px 12px;font-size:11px}
+}
