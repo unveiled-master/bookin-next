@@ -1,5 +1,5 @@
 import { ArrowRight, BadgeCheck, BedDouble, CalendarDays, ClipboardList, Heart, Home, MessageCircle, Plus, ShieldCheck, Users, Wallet } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 function Metric({ icon: Icon, label, value, note }: { icon: typeof Home; label: string; value: string; note: string }) {
   return <article className='dashboard-metric'><span><Icon size={19}/></span><small>{label}</small><strong>{value}</strong><p>{note}</p></article>
@@ -15,7 +15,8 @@ function OwnerDashboard({ name }: { name: string }) {
 }
 export function DashboardPage() {
  const { user, signOut } = useAuth()
- if (!user) return null
+ const navigate = useNavigate()
+ if (!user) return <Navigate to='/login' replace/>
  const roleLabel = user.role === 'owner' ? 'Property owner' : user.role === 'parent' ? 'Parent / guardian' : 'Student'
- return <main className='dashboard-page'><div className='dashboard-container'><header className='dashboard-topbar'><Link to='/' className='dashboard-brand'>bookinn<span>.</span></Link><div className='dashboard-user'><div><strong>{user.name}</strong><small>{roleLabel} · Demo account</small></div><button type='button' onClick={signOut}>Sign out</button></div></header><div className='dashboard-demo-banner'><BadgeCheck size={16}/> DEMO WORKSPACE <span>All names, activity, properties and figures on this page are fictional sample data.</span></div>{user.role === 'student' && <StudentDashboard name={user.name}/ >}{user.role === 'parent' && <ParentDashboard name={user.name} linkedStudentName={user.linkedStudentName}/ >}{user.role === 'owner' && <OwnerDashboard name={user.name}/ >}<footer className='dashboard-footer'>Bookinn Ghana · Frontend demo · No real bookings, payments or messages are processed.</footer></div></main>
+ return <main className='dashboard-page'><div className='dashboard-container'><header className='dashboard-topbar'><Link to='/' className='dashboard-brand'>bookinn<span>.</span></Link><div className='dashboard-user'><div><strong>{user.name}</strong><small>{roleLabel} · Demo account</small></div><button type='button' onClick={() => { signOut(); navigate('/') }}>Sign out</button></div></header><div className='dashboard-demo-banner'><BadgeCheck size={16}/> DEMO WORKSPACE <span>All names, activity, properties and figures on this page are fictional sample data.</span></div>{user.role === 'student' && <StudentDashboard name={user.name}/ >}{user.role === 'parent' && <ParentDashboard name={user.name} linkedStudentName={user.linkedStudentName}/ >}{user.role === 'owner' && <OwnerDashboard name={user.name}/ >}<footer className='dashboard-footer'>Bookinn Ghana · Frontend demo · No real bookings, payments or messages are processed.</footer></div></main>
 }
