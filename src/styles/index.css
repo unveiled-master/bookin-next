@@ -219,25 +219,3 @@ h1,h2,h3,.hero h1,.section-heading h2,.stay-card h3,.destination-card__copy stro
 .student-sidebar-signout{display:flex;align-items:center;gap:9px;margin-top:17px;padding:11px 12px;border:1px solid #ffffff26;border-radius:8px;background:transparent;color:#f3eae1;font-size:11px;font-weight:800;text-align:left;cursor:pointer}
 .student-sidebar-signout:hover{background:#ffffff18}
 @media(max-width:700px){.student-sidebar-signout{position:absolute;right:15px;top:13px;margin:0;padding:8px 10px;font-size:9px}.student-sidebar nav{padding-right:65px}}
-
-/* Student dashboard mobile slide-out navigation */
-.student-mobile-menu{display:none}
-.student-sidebar-backdrop{display:none}
-@media(max-width:700px){
- .student-mobile-menu{display:inline-flex;position:fixed;top:12px;left:14px;z-index:45;align-items:center;gap:7px;padding:8px 10px;border:1px solid #e5d9cd;border-radius:8px;background:#fffdfa;color:#493326;font-size:11px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px #49332612}
- .student-sidebar-backdrop{display:block;position:fixed;inset:0;z-index:25;width:100%;height:100%;border:0;background:#20160fcc;cursor:pointer}
- .student-sidebar{position:fixed;inset:0 auto 0 0;z-index:30;width:min(310px,86vw);height:100dvh;min-height:0;padding:24px 19px;overflow-y:auto;transform:translateX(-105%);transition:transform .25s ease;box-shadow:12px 0 35px #20160f26}
- .student-sidebar.is-open{transform:translateX(0)}
- .student-sidebar-brand{padding:0 5px 20px;font-size:25px}
- .student-sidebar-user{display:flex;margin:4px 0 23px}
- .student-sidebar-label{display:block}
- .student-sidebar-help{display:block;margin-top:auto}
- .student-sidebar-foot{display:block}
- .student-sidebar nav{display:grid;overflow:visible;gap:7px;padding:0}
- .student-sidebar nav button,.student-sidebar nav a{width:100%;flex:auto;padding:12px;border:1px solid #ffffff20;font-size:11px;white-space:normal}
- .student-sidebar nav button.is-active{box-shadow:none;background:#ffffff20}
- .student-sidebar nav button>span{margin-left:auto}
- .student-sidebar-signout{position:static;margin-top:22px;padding:11px 12px;font-size:11px}
- .student-workspace-top{height:60px;padding:0 18px 0 91px}
-}
-@media(prefers-reduced-motion:reduce){.student-sidebar{transition:none}}
