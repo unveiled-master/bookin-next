@@ -1,9 +1,8 @@
-import { ArrowRight, BadgeCheck, BedDouble, CalendarDays, ClipboardList, Heart, Home, MessageCircle, Plus, ShieldCheck, Users, Wallet } from 'lucide-react'
+import { ArrowRight, BadgeCheck, BedDouble, CalendarDays, ClipboardList, Heart, Home, MessageCircle, Plus, Search, ShieldCheck, UserRound, Users, Wallet } from 'lucide-react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 import { accommodations } from '../accommodation/accommodations'
 import { useState } from 'react'
-import { ArrowRight, BadgeCheck, Home, Heart, Search, UserRound, Plus, ShieldCheck, Users, Wallet, ClipboardList, BedDouble, MessageCircle, CalendarDays } from 'lucide-react'
 function Metric({ icon: Icon, label, value, note }: { icon: typeof Home; label: string; value: string; note: string }) {
   return <article className='dashboard-metric'><span><Icon size={19}/></span><small>{label}</small><strong>{value}</strong><p>{note}</p></article>
 }
