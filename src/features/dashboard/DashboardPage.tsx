@@ -6,7 +6,7 @@ import { useState } from 'react'
 function Metric({ icon: Icon, label, value, note }: { icon: typeof Home; label: string; value: string; note: string }) {
   return <article className='dashboard-metric'><span><Icon size={19}/></span><small>{label}</small><strong>{value}</strong><p>{note}</p></article>
 }
-function StudentDashboard({ name, email }: { name: string; email: string }) {
+function StudentDashboard({ name, email, onSignOut }: { name: string; email: string; onSignOut: () => void }) {
  const [section,setSection]=useState<'overview'|'saved'|'account'>('overview')
  const [savedIds,setSavedIds]=useState<string[]>(['legon-student-room','knust-shared-apartment'])
  const saved=accommodations.filter(home=>savedIds.includes(home.id))
@@ -23,7 +23,7 @@ function StudentDashboard({ name, email }: { name: string; email: string }) {
     <button type='button' className={section==='account'?'is-active':''} onClick={()=>go('account')}><UserRound size={17}/> My account</button>
    </nav>
    <div className='student-sidebar-help'><strong>Need help?</strong><p>Get guidance on finding student accommodation in Ghana.</p><Link to='/'>Visit Bookinn <ArrowRight size={13}/></Link></div>
-   <div className='student-sidebar-foot'>BOOKINN GHANA · DEMO</div>
+   <button type='button' className='student-sidebar-signout' onClick={onSignOut}>Sign out</button><div className='student-sidebar-foot'>BOOKINN GHANA · DEMO</div>
   </aside>
   <section className='student-workspace'>
    <header className='student-workspace-top'><div><small>STUDENT SPACE</small><strong>{section==='overview'?'Dashboard':section==='saved'?'Your saved stays':'My account'}</strong></div><span className='student-demo-tag'>DEMO ACCOUNT</span></header>
@@ -55,6 +55,7 @@ export function DashboardPage() {
  const { user, signOut } = useAuth()
  const navigate = useNavigate()
  if (!user) return <Navigate to='/login' replace/>
- const roleLabel = user.role === 'owner' ? 'Property owner' : user.role === 'parent' ? 'Parent / guardian' : 'Student'
- return <main className='dashboard-page'><div className='dashboard-container'><header className='dashboard-topbar'><Link to='/' className='dashboard-brand'>bookinn<span>.</span></Link><div className='dashboard-user'><div><strong>{user.name}</strong><small>{roleLabel} · Demo account</small></div><button type='button' onClick={() => { signOut(); navigate('/') }}>Sign out</button></div></header><div className='dashboard-demo-banner'><BadgeCheck size={16}/> DEMO WORKSPACE <span>All names, activity, properties and figures on this page are fictional sample data.</span></div>{user.role === 'student' && <StudentDashboard name={user.name} email={user.email}/ >}{user.role === 'parent' && <ParentDashboard name={user.name} linkedStudentName={user.linkedStudentName}/ >}{user.role === 'owner' && <OwnerDashboard name={user.name}/ >}<footer className='dashboard-footer'>Bookinn Ghana · Frontend demo · No real bookings, payments or messages are processed.</footer></div></main>
+ const roleLabel = user.role === 'owner' ? 'Property owner' : 'Parent / guardian'
+ if (user.role === 'student') return <main className='dashboard-page'><StudentDashboard name={user.name} email={user.email} onSignOut={() => { signOut(); navigate('/') }}/></main>
+ return <main className='dashboard-page'><div className='dashboard-container'><header className='dashboard-topbar'><Link to='/' className='dashboard-brand'>bookinn<span>.</span></Link><div className='dashboard-user'><div><strong>{user.name}</strong><small>{roleLabel} · Demo account</small></div><button type='button' onClick={() => { signOut(); navigate('/') }}>Sign out</button></div></header><div className='dashboard-demo-banner'><BadgeCheck size={16}/> DEMO WORKSPACE <span>All names, activity, properties and figures on this page are fictional sample data.</span></div>{user.role === 'parent' && <ParentDashboard name={user.name} linkedStudentName={user.linkedStudentName}/ >}{user.role === 'owner' && <OwnerDashboard name={user.name}/ >}<footer className='dashboard-footer'>Bookinn Ghana · Frontend demo · No real bookings, payments or messages are processed.</footer></div></main>
 }
