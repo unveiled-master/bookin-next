@@ -219,3 +219,6 @@ h1,h2,h3,.hero h1,.section-heading h2,.stay-card h3,.destination-card__copy stro
 .student-sidebar-signout{display:flex;align-items:center;gap:9px;margin-top:17px;padding:11px 12px;border:1px solid #ffffff26;border-radius:8px;background:transparent;color:#f3eae1;font-size:11px;font-weight:800;text-align:left;cursor:pointer}
 
 .student-mobile-menu{display:none}
+
+/* Keep the student menu toggle visible on mobile; the base rule is declared after the responsive block. */
+@media(max-width:700px){.student-mobile-menu{display:inline-flex;align-items:center;justify-content:center}}
