@@ -222,3 +222,8 @@ h1,h2,h3,.hero h1,.section-heading h2,.stay-card h3,.destination-card__copy stro
 
 /* Keep the student menu toggle visible on mobile; the base rule is declared after the responsive block. */
 @media(max-width:700px){.student-mobile-menu{display:inline-flex;align-items:center;justify-content:center}}
+
+/* Student sidebar heading and mobile close control */
+.student-sidebar-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.student-sidebar-close{display:none;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border:1px solid #ffffff35;border-radius:9px;background:#ffffff12;color:#fffaf4;cursor:pointer}
+@media(max-width:700px){.student-sidebar-head{width:100%;margin-bottom:18px}.student-sidebar-head .student-sidebar-brand{padding:0 12px}.student-sidebar-close{display:inline-flex}}
