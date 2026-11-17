@@ -1,4 +1,4 @@
-import { ArrowRight, BadgeCheck, BedDouble, CalendarDays, ClipboardList, Heart, Home, Menu, MessageCircle, Plus, Search, ShieldCheck, UserRound, Users, Wallet } from 'lucide-react'
+import { ArrowRight, BadgeCheck, BedDouble, CalendarDays, ClipboardList, Heart, Home, Menu, MessageCircle, Plus, Search, ShieldCheck, UserRound, Users, Wallet, X } from 'lucide-react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 import { accommodations } from '../accommodation/accommodations'
@@ -14,7 +14,7 @@ function StudentDashboard({ name, email, onSignOut }: { name: string; email: str
  const go=(next:'overview'|'saved'|'account')=>{setSection(next);setMobileAsideOpen(false)}
  return <div className='student-shell'>
   <aside className={`student-sidebar ${mobileAsideOpen?'is-open':''}`}>
-   <Link to='/' className='student-sidebar-brand' onClick={()=>setMobileAsideOpen(false)}>bookinn<span>.</span></Link>
+   <div className='student-sidebar-head'><Link to='/' className='student-sidebar-brand' onClick={()=>setMobileAsideOpen(false)}>bookinn<span>.</span></Link><button type='button' className='student-sidebar-close' aria-label='Close student menu' onClick={()=>setMobileAsideOpen(false)}><X size={22}/></button></div>
    <div className='student-sidebar-user'><span>{name.charAt(0).toUpperCase()}</span><div><strong>{name}</strong><small>Student account</small></div></div>
    <div className='student-sidebar-label'>STUDENT MENU</div>
    <nav aria-label='Student links'>
