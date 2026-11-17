@@ -1,4 +1,4 @@
-import { ArrowRight, BadgeCheck, BedDouble, CalendarDays, ClipboardList, Heart, Home, MessageCircle, Plus, Search, ShieldCheck, UserRound, Users, Wallet } from 'lucide-react'
+import { ArrowRight, BadgeCheck, BedDouble, CalendarDays, ClipboardList, Heart, Home, MessageCircle, Menu, Plus, Search, ShieldCheck, X, UserRound, Users, Wallet } from 'lucide-react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 import { accommodations } from '../accommodation/accommodations'
@@ -8,22 +8,25 @@ function Metric({ icon: Icon, label, value, note }: { icon: typeof Home; label: 
 }
 function StudentDashboard({ name, email, onSignOut }: { name: string; email: string; onSignOut: () => void }) {
  const [section,setSection]=useState<'overview'|'saved'|'account'>('overview')
+ const [mobileNavOpen,setMobileNavOpen]=useState(false)
  const [savedIds,setSavedIds]=useState<string[]>(['legon-student-room','knust-shared-apartment'])
  const saved=accommodations.filter(home=>savedIds.includes(home.id))
- const go=(next:'overview'|'saved'|'account')=>setSection(next)
+ const go=(next:'overview'|'saved'|'account')=>{setSection(next);setMobileNavOpen(false)}
  return <div className='student-shell'>
-  <aside className='student-sidebar'>
-   <Link to='/' className='student-sidebar-brand'>bookinn<span>.</span></Link>
+  <button type='button' className='student-mobile-menu' aria-label={mobileNavOpen?'Close navigation':'Open navigation'} aria-expanded={mobileNavOpen} onClick={()=>setMobileNavOpen(open=>!open)}>{mobileNavOpen?<X size={20}/>:<Menu size={20}/>}<span>{mobileNavOpen?'Close':'Menu'}</span></button>
+  {mobileNavOpen&&<button type='button' className='student-sidebar-backdrop' aria-label='Close navigation menu' onClick={()=>setMobileNavOpen(false)}/>}
+  <aside className={`student-sidebar${mobileNavOpen?' is-open':''}`}>
+   <Link to='/' className='student-sidebar-brand' onClick={()=>setMobileNavOpen(false)}>bookinn<span>.</span></Link>
    <div className='student-sidebar-user'><span>{name.charAt(0).toUpperCase()}</span><div><strong>{name}</strong><small>Student account</small></div></div>
    <div className='student-sidebar-label'>STUDENT MENU</div>
    <nav aria-label='Student links'>
     <button type='button' className={section==='overview'?'is-active':''} onClick={()=>go('overview')}><Home size={17}/> Dashboard</button>
-    <Link to='/search'><Search size={17}/> Explore stays <ArrowRight size={13}/></Link>
+    <Link to='/search' onClick={()=>setMobileNavOpen(false)}><Search size={17}/> Explore stays <ArrowRight size={13}/></Link>
     <button type='button' className={section==='saved'?'is-active':''} onClick={()=>go('saved')}><Heart size={17}/> Saved stays <span>{savedIds.length}</span></button>
     <button type='button' className={section==='account'?'is-active':''} onClick={()=>go('account')}><UserRound size={17}/> My account</button>
    </nav>
    <div className='student-sidebar-help'><strong>Need help?</strong><p>Get guidance on finding student accommodation in Ghana.</p><Link to='/'>Visit Bookinn <ArrowRight size={13}/></Link></div>
-   <button type='button' className='student-sidebar-signout' onClick={onSignOut}>Sign out</button><div className='student-sidebar-foot'>BOOKINN GHANA · DEMO</div>
+   <button type='button' className='student-sidebar-signout' onClick={()=>{setMobileNavOpen(false);onSignOut()}}>Sign out</button><div className='student-sidebar-foot'>BOOKINN GHANA · DEMO</div>
   </aside>
   <section className='student-workspace'>
    <header className='student-workspace-top'><div><small>STUDENT SPACE</small><strong>{section==='overview'?'Dashboard':section==='saved'?'Your saved stays':'My account'}</strong></div><span className='student-demo-tag'>DEMO ACCOUNT</span></header>
