@@ -308,3 +308,16 @@ h1,h2,h3,.hero h1,.section-heading h2,.stay-card h3,.destination-card__copy stro
  .account-shell .student-sidebar nav button,.account-shell .student-sidebar nav a{width:100%;padding:12px;border:0;font-size:12px;white-space:normal}
  .account-shell .student-sidebar-signout{position:static;margin-top:17px;padding:11px 12px;font-size:11px}
 }
+
+/* Theme switcher control */
+.theme-switcher{display:inline-flex;align-items:center;gap:5px;padding:4px;border:1px solid var(--border);border-radius:9px;background:var(--surface);color:var(--text);width:max-content}
+.theme-switcher button{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 10px;border:0;border-radius:6px;background:transparent;color:var(--text-secondary);font-size:10px;font-weight:800;cursor:pointer}
+.theme-switcher button.is-active{background:var(--surface-secondary);color:var(--text);box-shadow:inset 0 0 0 1px var(--border)}
+.theme-switcher--compact{padding:3px}
+.theme-switcher--compact button{padding:7px}
+.student-sidebar-theme{padding:14px 12px;margin-bottom:14px;display:grid;gap:8px}
+.student-sidebar-theme>small{font-size:9px;letter-spacing:1.4px;font-weight:900;color:#c4a78d}
+.student-sidebar-theme .theme-switcher{width:100%;justify-content:space-between;background:#ffffff0a;border-color:#ffffff25}
+.student-sidebar-theme .theme-switcher button{color:#f3eae1;flex:1;padding:9px 7px}
+.student-sidebar-theme .theme-switcher button.is-active{background:#ffffff18;color:#fff}
+@media(max-width:860px){.site-header .theme-switcher--compact{display:none}}
