@@ -1,0 +1,42 @@
+/* Bookinn shared appearance themes: system is the default preference. */
+:root,[data-theme="light"]{
+ color-scheme:light;
+ --bg:#f8f5f0;--surface:#fffdfa;--surface-secondary:#e9dfd2;--text:#493326;--text-secondary:#80634d;--primary:#80634d;--border:#e4d8cb;--accent:#d98a50;--accent-soft:#f5e4d4;--line:#e9e1d8;--muted:#81766d;--espresso:#493326;--brown:#80634d;--caramel:#bd936b;--sand:#e9dfd2;--ivory:#f8f5f0;--paper:#fffdfa;
+}
+[data-theme="dark"]{
+ color-scheme:dark;
+ --bg:#1e1a17;--surface:#29231e;--surface-secondary:#302821;--text:#f3eae1;--text-secondary:#b7a08d;--primary:#bd936b;--border:#44372e;--accent:#e2a16f;--accent-soft:#403126;--line:#44372e;--muted:#b7a08d;--espresso:#f3eae1;--brown:#bd936b;--caramel:#e2a16f;--sand:#302821;--ivory:#29231e;--paper:#29231e;
+}
+html,body,#root{background:var(--bg);color:var(--text)}
+body{transition:background-color .18s ease,color .18s ease}
+.site-header,.student-workspace-top,.search-panel,.dashboard-panel,.student-account-summary,.student-saved-card,.student-empty,.owner-tabs,.owner-modal,.owner-search,.owner-row-actions button,.owner-modal-close,.owner-modal input,.owner-modal select,.student-outline-btn,.student-mobile-menu,.mobile-nav,.empty-search,.success-panel,.auth-field input,.auth-field select,.google-button,.demo-hint button{background-color:var(--surface);color:var(--text);border-color:var(--border)}
+.student-shell,.student-workspace,.account-shell .student-workspace,.dashboard-page,.parent-account-page,.student-content,.owner-dashboard{background:var(--bg);color:var(--text)}
+.student-sidebar{background:#493326;color:#fffaf4}
+.student-sidebar nav button,.student-sidebar nav a{color:#f3eae1}
+.student-sidebar-user small,.student-sidebar-help p,.student-sidebar-foot{color:#d5c6b8}
+.student-workspace-top{border-color:var(--border)}
+.student-demo-tag,.owner-count,.owner-state--paused{background:var(--surface-secondary);color:var(--text-secondary)}
+.student-account-summary,.student-saved-card,.dashboard-panel,.owner-modal{border-color:var(--border)}
+.student-summary-grid,.student-profile-identity,.student-saved-card-actions,.owner-listing-row,.owner-manage-row,.owner-inquiry-preview,.owner-inquiry-card,.owner-student-row,.owner-analytics-stat{border-color:var(--border)}
+.student-summary-grid small,.student-heading p,.student-section-heading p,.student-saved-card span,.student-demo-note,.student-profile-identity small,.owner-listing-main small,.owner-inquiry-preview small,.owner-inquiry-top small,.owner-section-copy,.owner-analytics-stat span,.dashboard-footer{color:var(--text-secondary)}
+.student-summary-grid strong,.student-saved-card strong,.student-saved-card b,.owner-listing-main strong,.owner-panel-title,.dashboard-panel h2,.owner-inquiry-card>b{color:var(--text)}
+.student-outline-btn,.owner-search,.owner-modal input,.owner-modal select,.auth-field input,.auth-field select,.google-button{background:var(--surface);color:var(--text);border-color:var(--border)}
+.student-empty,.empty-search{background:var(--surface-secondary)}
+.student-profile-identity>span,.owner-property-icon,.owner-student-avatar,.dashboard-metric>span{background:var(--surface-secondary);color:var(--primary)}
+.owner-state--active{background:#e8f2e8;color:#397044}
+.owner-state--draft{background:#f7eadc;color:#98613a}
+.owner-inquiry-card.is-selected{background:var(--surface-secondary)}
+.dashboard-demo-banner{background:var(--accent-soft);border-color:var(--border);color:var(--text)}
+.dashboard-demo-banner span{color:var(--text-secondary)}
+.dashboard-metric,.dashboard-panel,.student-account-summary,.student-saved-card,.student-empty{background:var(--surface);border-color:var(--border)}
+.dashboard-metric small,.dashboard-metric p,.dashboard-copy{color:var(--text-secondary)}
+.dashboard-tips{background:#493326;color:#fffaf4;border-color:#493326}
+.dashboard-tips h2{color:#fffaf4}
+.dashboard-tips p{color:#d7c9bd}
+.auth-page,.auth-content{background:var(--bg);color:var(--text)}
+.auth-content h1,.auth-field>span{color:var(--text)}
+.auth-subtitle,.auth-switch,.auth-legal{color:var(--text-secondary)}
+.auth-field input,.auth-field select{border-color:var(--border);background:var(--surface);color:var(--text)}
+.owner-modal-backdrop{background:#0009}
+.site-footer{background:#2f2119;color:#f8f1e9}
+@media(prefers-reduced-motion:reduce){body{transition:none}}
