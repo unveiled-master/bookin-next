@@ -86,3 +86,6 @@ export const initialOwnerInquiries: OwnerInquiry[] = [
   { id: 2, student: 'Yaw Boateng', email: 'yaw@example.test', listing: 'Kumasi Campus Shared Apartment', message: 'Could you confirm what is included in the rent?', date: 'Yesterday', confirmed: false },
   { id: 3, student: 'Esi Mensah', email: 'esi@example.test', listing: 'Legon Student House', message: 'I have moved in and would like to confirm my resident status.', date: '12 Nov', confirmed: true },
 ]
+
+/** Default saved listing IDs for the student demo profile. */
+export const initialStudentSavedAccommodationIds: string[] = ['legon-student-room', 'knust-shared-apartment']
