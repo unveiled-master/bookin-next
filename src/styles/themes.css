@@ -88,3 +88,50 @@ button:disabled{opacity:.48;cursor:not-allowed;filter:none}
 /* Keep the Bookinn brand mark legible in dark mode: warm mark, dark icon. */
 [data-theme="dark"] .brand__mark{background:var(--color-hex-bd936b);color:var(--color-hex-30251e)}
 [data-theme="dark"] .brand__mark svg{stroke:var(--color-currentcolor)}
+
+/* Sticky site header and theme-aware dashboard sidebar */
+.site-header{position:sticky;top:0;z-index:100;background:var(--surface);box-shadow:0 4px 14px var(--color-rgba-43-30-21-12)}
+:root,[data-theme="light"]{
+ --sidebar-bg:var(--color-hex-fffdfa);
+ --sidebar-text:var(--color-hex-493326);
+ --sidebar-muted:var(--color-hex-80634d);
+ --sidebar-border:var(--color-hex-e4d8cb);
+ --sidebar-label:var(--color-hex-80634d);
+ --sidebar-hover:var(--color-hex-e9dfd2);
+ --sidebar-active:var(--color-hex-f5e4d4);
+ --sidebar-active-text:var(--color-hex-493326);
+ --sidebar-accent:var(--color-hex-d98a50);
+ --sidebar-help-bg:var(--color-hex-f8f5f0);
+ --sidebar-avatar-bg:var(--color-hex-e9dfd2);
+ --sidebar-avatar-text:var(--color-hex-493326);
+}
+[data-theme="dark"]{
+ --sidebar-bg:var(--color-hex-29231e);
+ --sidebar-text:var(--color-hex-f3eae1);
+ --sidebar-muted:var(--color-hex-b7a08d);
+ --sidebar-border:var(--color-hex-44372e);
+ --sidebar-label:var(--color-hex-e2a16f);
+ --sidebar-hover:var(--color-hex-3b3027);
+ --sidebar-active:var(--color-hex-403126);
+ --sidebar-active-text:var(--color-hex-f3eae1);
+ --sidebar-accent:var(--color-hex-e2a16f);
+ --sidebar-help-bg:var(--color-hex-302821);
+ --sidebar-avatar-bg:var(--color-hex-bd936b);
+ --sidebar-avatar-text:var(--color-hex-30251e);
+}
+.student-sidebar{background:var(--sidebar-bg);color:var(--sidebar-text);border-right:1px solid var(--sidebar-border)}
+.student-sidebar-brand{color:var(--sidebar-text)}
+.student-sidebar-user{border-color:var(--sidebar-border)}
+.student-sidebar-user>span{background:var(--sidebar-avatar-bg);color:var(--sidebar-avatar-text)}
+.student-sidebar-user small,.student-sidebar-help p,.student-sidebar-foot{color:var(--sidebar-muted)}
+.student-sidebar-label{color:var(--sidebar-label)}
+.student-sidebar nav button,.student-sidebar nav a{color:var(--sidebar-text)}
+.student-sidebar nav button:hover,.student-sidebar nav a:hover{background:var(--sidebar-hover);color:var(--sidebar-text)}
+.student-sidebar nav button.is-active{background:var(--sidebar-active);color:var(--sidebar-active-text);box-shadow:inset 3px 0 var(--sidebar-accent)}
+.student-sidebar nav button>span{background:var(--sidebar-hover);color:var(--sidebar-text)}
+.student-sidebar-help{border-color:var(--sidebar-border);background:var(--sidebar-help-bg)}
+.student-sidebar-help a{color:var(--sidebar-accent)}
+.student-sidebar-signout{color:var(--sidebar-text);border-color:var(--sidebar-border);background:var(--sidebar-hover)}
+.student-sidebar-signout:hover{background:var(--sidebar-active)}
+.student-sidebar-close{border-color:var(--sidebar-border);background:var(--sidebar-hover);color:var(--sidebar-text)}
+.student-sidebar-theme .theme-switcher button.is-active{background:var(--sidebar-active);color:var(--sidebar-text);border-color:var(--sidebar-border)}
