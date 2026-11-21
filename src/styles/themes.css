@@ -135,3 +135,7 @@ button:disabled{opacity:.48;cursor:not-allowed;filter:none}
 .student-sidebar-signout:hover{background:var(--sidebar-active)}
 .student-sidebar-close{border-color:var(--sidebar-border);background:var(--sidebar-hover);color:var(--sidebar-text)}
 .student-sidebar-theme .theme-switcher button.is-active{background:var(--sidebar-active);color:var(--sidebar-text);border-color:var(--sidebar-border)}
+
+/* Sidebar overlays dashboard header navigation. */
+.student-sidebar{position:relative;z-index:110}
+@media(max-width:700px){.account-shell .student-sidebar{z-index:110}}
