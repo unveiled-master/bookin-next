@@ -2,7 +2,7 @@ import { ArrowRight, BadgeCheck, BedDouble, CalendarDays, ClipboardList, Heart, 
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 import { accommodations } from '../accommodation/accommodations'
-import { initialOwnerListings, initialOwnerInquiries, type OwnerListing, type OwnerInquiry } from '../../data/data'
+import { initialOwnerListings, initialOwnerInquiries, initialStudentSavedAccommodationIds, type OwnerListing, type OwnerInquiry } from '../../data/data'
 import { useState } from 'react'
 import { ThemeSwitcher } from '../../components/ui/ThemeSwitcher'
 function Metric({ icon: Icon, label, value, note }: { icon: typeof Home; label: string; value: string; note: string }) {
@@ -11,7 +11,7 @@ function Metric({ icon: Icon, label, value, note }: { icon: typeof Home; label: 
 function StudentDashboard({ name, email, onSignOut }: { name: string; email: string; onSignOut: () => void }) {
  const [section,setSection]=useState<'overview'|'saved'|'account'>('overview')
  const [mobileAsideOpen,setMobileAsideOpen]=useState(false)
- const [savedIds,setSavedIds]=useState<string[]>(['legon-student-room','knust-shared-apartment'])
+ const [savedIds,setSavedIds]=useState<string[]>(initialStudentSavedAccommodationIds)
  const saved=accommodations.filter(home=>savedIds.includes(home.id))
  const go=(next:'overview'|'saved'|'account')=>{setSection(next);setMobileAsideOpen(false)}
  return <div className='student-shell'>
