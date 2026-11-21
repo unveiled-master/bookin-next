@@ -84,3 +84,7 @@ button:disabled{opacity:.48;cursor:not-allowed;filter:none}
 [data-theme="dark"] .google-button:hover{background:var(--btn-hover-soft)}
 [data-theme="dark"] .demo-hint button{background:var(--btn-secondary-bg);color:var(--btn-secondary-text)}
 [data-theme="dark"] .demo-hint button:hover{background:var(--btn-hover-soft)}
+
+/* Keep the Bookinn brand mark legible in dark mode: warm mark, dark icon. */
+[data-theme="dark"] .brand__mark{background:#bd936b;color:#30251e}
+[data-theme="dark"] .brand__mark svg{stroke:currentColor}
