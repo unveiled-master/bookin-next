@@ -1,11 +1,6 @@
-export type UserRole = 'student' | 'parent' | 'owner'
-export type DemoUser = { id: string; name: string; email: string; role: UserRole; linkedStudentName?: string }
-
-export const demoAccounts: Array<DemoUser & { password: string }> = [
-  { id: 'demo-student', name: 'Ama Mensah', email: 'student@bookinn.test', password: 'bookinn123', role: 'student' },
-  { id: 'demo-parent', name: 'Kwame Mensah', email: 'parent@bookinn.test', password: 'bookinn123', role: 'parent', linkedStudentName: 'Ama Mensah' },
-  { id: 'demo-owner', name: 'Nana Owusu', email: 'owner@bookinn.test', password: 'bookinn123', role: 'owner' },
-]
+import { demoAccounts, type UserRole, type DemoUser } from '../../data/data'
+export { demoAccounts }
+export type { UserRole, DemoUser }
 const SESSION_KEY = 'bookinn-demo-user'
 const demoEnabled = import.meta.env.VITE_DEMO_MODE !== 'false'
 const legacyEmail = import.meta.env.VITE_DEMO_EMAIL || 'guest@bookinn.test'

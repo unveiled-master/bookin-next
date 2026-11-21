@@ -2,6 +2,7 @@ import { ArrowRight, BadgeCheck, BedDouble, CalendarDays, ClipboardList, Heart, 
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 import { accommodations } from '../accommodation/accommodations'
+import { initialOwnerListings, initialOwnerInquiries, type OwnerListing, type OwnerInquiry } from '../../data/data'
 import { useState } from 'react'
 import { ThemeSwitcher } from '../../components/ui/ThemeSwitcher'
 function Metric({ icon: Icon, label, value, note }: { icon: typeof Home; label: string; value: string; note: string }) {
@@ -68,19 +69,9 @@ function ParentDashboard({ name, email }: { name: string; email: string }) {
   </section>}
  </div>
 }
-type OwnerListing = { id: number; name: string; location: string; university: string; price: number; category: string; status: 'Active'|'Paused'|'Draft' }
-type OwnerInquiry = { id: number; student: string; email: string; listing: string; message: string; date: string; confirmed: boolean }
 function OwnerDashboard({ name, tab, setTab }: { name: string; tab: 'overview'|'listings'|'inquiries'|'students'|'analytics'; setTab: (tab: 'overview'|'listings'|'inquiries'|'students'|'analytics') => void }) {
- const [listings,setListings]=useState<OwnerListing[]>([
-  {id:1,name:'Legon Student House',location:'Accra · Legon',university:'University of Ghana',price:1800,category:'Private room',status:'Active'},
-  {id:2,name:'Madina Student Hostel',location:'Accra · Madina',university:'University of Professional Studies, Accra',price:950,category:'Hostel bedspace',status:'Draft'},
-  {id:3,name:'Kumasi Campus Shared Apartment',location:'Kumasi',university:'KNUST',price:2200,category:'Shared apartment',status:'Active'}
- ])
- const [inquiries,setInquiries]=useState<OwnerInquiry[]>([
-  {id:1,student:'Akosua Agyeman',email:'akosua@example.test',listing:'Legon Student House',message:'Is the room still available for the next academic year?',date:'Today',confirmed:false},
-  {id:2,student:'Yaw Boateng',email:'yaw@example.test',listing:'Kumasi Campus Shared Apartment',message:'Could you confirm what is included in the rent?',date:'Yesterday',confirmed:false},
-  {id:3,student:'Esi Mensah',email:'esi@example.test',listing:'Legon Student House',message:'I have moved in and would like to confirm my resident status.',date:'12 Nov',confirmed:true}
- ])
+ const [listings,setListings]=useState<OwnerListing[]>(initialOwnerListings)
+ const [inquiries,setInquiries]=useState<OwnerInquiry[]>(initialOwnerInquiries)
  const [formOpen,setFormOpen]=useState(false)
  const [editingId,setEditingId]=useState<number|null>(null)
  const [form,setForm]=useState({name:'',location:'',university:'',price:'',category:'Private room'})

@@ -1,20 +1,7 @@
 import { useMemo, useState } from 'react'
 import { ArrowRight, BadgeCheck, GraduationCap, Heart, MapPin, Search, ShieldCheck, Wallet, Users, BedDouble, CalendarDays } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
-
-const homes = [
-  { name: 'Legon Student House', place: 'Accra (Legon) · near the University of Ghana', price: 1800, rating: 'Sample', type: 'Private room', tag: 'Budget friendly', duration: 'Academic year', image: 'photo-1522708323590-d24dbb6b0267', premium: false, details: 'Furnished · Shared kitchen · Utility details to confirm' },
-  { name: 'Kumasi Campus Shared Apartment', place: 'Kumasi · 12 min to campus', price: 2200, rating: 'Sample', type: 'Shared apartment', tag: 'Great value', duration: 'Calendar year', image: 'photo-1600607687939-ce8a6c25118c', premium: false, details: 'Furnished · Shared living areas · Utility details to confirm' },
-  { name: 'Cape Coast Study Residence', place: 'Cape Coast · near University of Cape Coast', price: 3200, rating: 'Sample', type: 'Private room', tag: 'Premium pick', duration: 'Flexible', image: 'photo-1600210492486-724fe5c67fb0', premium: true, details: 'Private washroom · Study area · Utility details to confirm' },
-  { name: 'Accra Student Hostel', place: 'Accra (Madina) · campus area', price: 950, rating: 'Sample', type: 'Hostel', tag: 'Lowest monthly price', duration: 'Short stay', image: 'photo-1555854877-bab0e564b8d5', premium: false, details: 'Shared facilities · Furnished · Availability to confirm' },
-]
-
-const campuses = [
-  { name: 'Accra (Legon)', school: 'University of Ghana and nearby colleges', image: 'photo-1518005020951-eccb494ad742' },
-  { name: 'Cape Coast', school: 'University of Cape Coast and more', image: 'photo-1511818966892-d7d671e672a2' },
-  { name: 'Kumasi', school: 'KNUST and nearby colleges', image: 'photo-1519608487953-e999c86e7455' },
-  { name: 'Accra (Madina)', school: 'UPSA and nearby colleges', image: 'photo-1516979187457-637546e3f8f2' },
-]
+import { homePreviews as homes, campusDestinations as campuses } from '../../data/data'
 
 const photo = (id: string, w = 900) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`
 
