@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 import { accommodations } from '../accommodation/accommodations'
 import { useState } from 'react'
+import { ThemeSwitcher } from '../../components/ui/ThemeSwitcher'
 function Metric({ icon: Icon, label, value, note }: { icon: typeof Home; label: string; value: string; note: string }) {
   return <article className='dashboard-metric'><span><Icon size={19}/></span><small>{label}</small><strong>{value}</strong><p>{note}</p></article>
 }
@@ -23,7 +24,7 @@ function StudentDashboard({ name, email, onSignOut }: { name: string; email: str
     <button type='button' className={section==='saved'?'is-active':''} onClick={()=>go('saved')}><Heart size={17}/> Saved stays <span>{savedIds.length}</span></button>
     <button type='button' className={section==='account'?'is-active':''} onClick={()=>go('account')}><UserRound size={17}/> My account</button>
    </nav>
-   <div className='student-sidebar-help'><strong>Need help?</strong><p>Get guidance on finding student accommodation in Ghana.</p><Link to='/' onClick={()=>setMobileAsideOpen(false)}>Visit Bookinn <ArrowRight size={13}/></Link></div>
+   <div className='student-sidebar-theme'><small>APPEARANCE</small><ThemeSwitcher /></div><div className='student-sidebar-help'><strong>Need help?</strong><p>Get guidance on finding student accommodation in Ghana.</p><Link to='/' onClick={()=>setMobileAsideOpen(false)}>Visit Bookinn <ArrowRight size={13}/></Link></div>
    <button type='button' className='student-sidebar-signout' onClick={onSignOut}>Sign out</button><div className='student-sidebar-foot'>BOOKINN GHANA · DEMO</div>
   </aside>
   <section className='student-workspace'>
