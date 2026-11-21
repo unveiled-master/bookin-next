@@ -490,3 +490,7 @@ h1,h2,h3,.hero h1,.section-heading h2,.stay-card h3,.destination-card__copy stro
 .student-sidebar-theme .theme-switcher button{color:var(--color-hex-f3eae1);flex:1;padding:9px 7px}
 .student-sidebar-theme .theme-switcher button.is-active{background:var(--color-hex-ffffff18);color:var(--color-hex-fff)}
 @media(max-width:860px){.site-header .theme-switcher--compact{display:none}}
+
+
+/* Keep dashboard header navigation fixed in view while workspace content scrolls. */
+.student-workspace-top{position:sticky;top:0;z-index:100;background:var(--surface);box-shadow:0 4px 14px var(--color-rgba-43-30-21-12)}
