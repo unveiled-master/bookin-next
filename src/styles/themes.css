@@ -62,3 +62,25 @@ body{transition:background-color .18s ease,color .18s ease}
 [data-theme="dark"] .owner-form-note{background:var(--surface-secondary);color:var(--text-secondary)}
 [data-theme="dark"] .mobile-nav{background:var(--surface);border-color:var(--border)}
 [data-theme="dark"] .mobile-nav a{color:var(--text)}
+
+/* Semantic button colours are theme-aware. */
+:root,[data-theme="light"]{--btn-primary-bg:#493326;--btn-primary-text:#fffaf4;--btn-primary-hover:#80634d;--btn-secondary-bg:#e9dfd2;--btn-secondary-text:#493326;--btn-outline-border:#80634d;--btn-outline-text:#80634d;--btn-hover-soft:#f0e7dd;--btn-focus-ring:rgba(189,147,107,.42)}
+[data-theme="dark"]{--btn-primary-bg:#bd936b;--btn-primary-text:#211911;--btn-primary-hover:#d4a77f;--btn-secondary-bg:#302821;--btn-secondary-text:#f3eae1;--btn-outline-border:#bd936b;--btn-outline-text:#e2a16f;--btn-hover-soft:#3b3027;--btn-focus-ring:rgba(226,161,111,.48)}
+.button,.search-submit,.dashboard-primary,.enquiry-form .button,.student-section-heading>button{background:var(--btn-primary-bg);color:var(--btn-primary-text);border-color:var(--btn-primary-bg)}
+.button:hover,.search-submit:hover,.dashboard-primary:hover,.enquiry-form .button:hover,.student-section-heading>button:hover{background:var(--btn-primary-hover,var(--btn-primary-hover));background:var(--btn-primary-hover,var(--btn-primary-bg));filter:brightness(1.05);border-color:var(--btn-primary-hover,var(--btn-primary-bg))}
+.student-outline-btn,.student-summary-actions button,.student-saved-card-actions button,.student-saved-card-actions a,.owner-row-actions button,.owner-modal-close,.owner-text-action,.owner-tabs button{color:var(--btn-outline-text);border-color:var(--btn-outline-border)}
+.student-outline-btn,.student-summary-actions button,.student-saved-card-actions button,.student-saved-card-actions a,.owner-row-actions button,.owner-modal-close{background:var(--surface)}
+.student-outline-btn:hover,.student-summary-actions button:hover,.student-saved-card-actions button:hover,.student-saved-card-actions a:hover,.owner-row-actions button:hover,.owner-modal-close:hover{background:var(--btn-hover-soft);color:var(--text)}
+.owner-tabs button{background:transparent;color:var(--text-secondary);border-color:transparent}
+.owner-tabs button.is-active{background:var(--btn-primary-bg);color:var(--btn-primary-text);border-color:var(--btn-primary-bg)}
+.owner-text-action{background:transparent;border-color:transparent}
+.theme-switcher button{background:transparent;color:var(--text-secondary)}
+.theme-switcher button.is-active{background:var(--btn-secondary-bg);color:var(--btn-secondary-text);border-color:var(--border)}
+.student-sidebar-theme .theme-switcher button.is-active{background:#ffffff20;color:#fff;border-color:#ffffff2a}
+.mobile-menu,.student-mobile-menu,.student-sidebar-close{background:transparent;color:var(--text);border:1px solid var(--border)}
+button:not(:disabled):focus-visible,a:focus-visible{outline:2px solid var(--btn-focus-ring);outline-offset:2px}
+button:disabled{opacity:.48;cursor:not-allowed;filter:none}
+[data-theme="dark"] .google-button{background:var(--surface);color:var(--text);border-color:var(--border)}
+[data-theme="dark"] .google-button:hover{background:var(--btn-hover-soft)}
+[data-theme="dark"] .demo-hint button{background:var(--btn-secondary-bg);color:var(--btn-secondary-text)}
+[data-theme="dark"] .demo-hint button:hover{background:var(--btn-hover-soft)}
